@@ -9,6 +9,13 @@ from .models import BloodGroup
 # Create your views here.
 @login_required(login_url='account:signin')
 def home(request):
+    if request.method=="POST":
+        blood_group= request.POST['blood_group']
+        print (blood_group)
+        pincode= request.POST['pincode']
+        print (pincode)
+        result=BloodGroup.objects.filter(pincode=pincode)
+        return render(request,'index.html',{'result': result})
     
     return render(request,'index.html')
 
