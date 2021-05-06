@@ -24,7 +24,7 @@
       </div>
       <ul class='links'>
         <li><a href="#">Home</a></li>
-        <li><a href="#">About us</a></li>
+        <li><a href="{% url 'blood:bloodgroup' %}">Register BloodGroup</a></li>
         <li><a href="#">Solved Q & A</a></li>
         <li><a href="#">Find Answer</a></li>
       </ul>
@@ -35,11 +35,17 @@
       </div>
       <div class="logout">
         <button>
-            <a href="">logout</a>
+            <a href=" {% url  'account:signout' %}">logout</a>
         </button>
       </div>
      
     </nav>
+    
+    {% for message in messages %}
+    <h1 style="color:black">{{ message.error }}</h1>
+    {% endfor %}
+    
+
     {% block content %}
    
    

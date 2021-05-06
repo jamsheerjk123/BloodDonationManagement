@@ -1,6 +1,7 @@
 from django.db import models
 from account.models import UserAccount
 from phonenumber_field.modelfields import PhoneNumberField
+from django.core.validators import MaxValueValidator
 # Create your models here.
 
 
@@ -27,6 +28,7 @@ class BloodGroup(models.Model):
     phone= PhoneNumberField(null=False,blank=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    pincode=models.IntegerField(null=False,blank=False, validators=[MaxValueValidator(999999)])
 
 
     def __str__(self):
