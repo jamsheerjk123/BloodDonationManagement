@@ -14,7 +14,7 @@ body{
 nav{
 
     display: flex;
-    justify-content:space-around;
+    justify-content:space-between;
     align-items:center;
     min-height:8vh;
     font-family: 'Poppins', sans-serif;
@@ -35,9 +35,9 @@ nav{
 .links{
 
     display:flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items:center;
-    width:40%;
+    width:56%;
 }
 
 .links a{
@@ -71,7 +71,7 @@ nav{
 .links{
 
     
-    width:60%;
+    width:70%;
 }
 
 }

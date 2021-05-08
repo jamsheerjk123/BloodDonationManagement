@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from account.views import *
 from django.contrib import messages
 from .models import BloodGroup
+from django.db.models import Q
 
 
 # Create your views here.
@@ -11,10 +12,18 @@ from .models import BloodGroup
 def home(request):
     if request.method=="POST":
         blood_group= request.POST['blood_group']
-        print (blood_group)
+
         pincode= request.POST['pincode']
-        print (pincode)
-        result=BloodGroup.objects.filter(pincode=pincode)
+
+        street_name = request.POST.get('street_name','')
+
+        if street_name != "":
+            result=BloodGroup.objects.filter(Q(pincode=pincode)& Q(blood_group=blood_group) & Q(street_name=street_name))
+            return render(request,'index.html',{'result': result})
+        
+        
+        
+        result=BloodGroup.objects.filter(Q(pincode=pincode)& Q(blood_group=blood_group))
         return render(request,'index.html',{'result': result})
     
     return render(request,'index.html')

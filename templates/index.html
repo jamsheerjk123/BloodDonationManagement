@@ -11,7 +11,7 @@
     {% endblock %}
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     
-    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}" type="text/css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
   
@@ -24,10 +24,10 @@
 
       </div>
       <ul class='links'>
-        <li><a href="#">Home</a></li>
+        <li><a href="{% url 'blood:home' %}">Home</a></li>
         <li><a href="{% url 'blood:bloodgroup' %}">Register BloodGroup</a></li>
-        <li><a href="#">Solved Q & A</a></li>
-        <li><a href="#">Find Answer</a></li>
+        <li><a href="#">Update Your Status</a></li>
+        <li><a href="#">About Us</a></li>
       </ul>
       <div class="burger">
         <div class="line1"></div>
@@ -78,6 +78,7 @@
         <option value="B+">B+</option>
         <option value="B-">B-ve</option>
       </select>
+      Street Name:<input type="text" name="street_name" placeholder="Optional" id="">
 
       <input type="submit" value="search"style="margin-top:20px;background-image: linear-gradient(to left, #c61f44, #921d3a, #611a2d, #32131c, #000000);
       color: floralwhite;
@@ -97,6 +98,8 @@
           <th scope="col">Phone</th>
           <th scope="col">Place</th>
           <th scope="col">Blood Group</th>
+          <th scope="col">Street Name</th>
+          
         </tr>
       </thead>
       <tbody>
@@ -107,6 +110,7 @@
           <td>{{ res.phone }}</td>
           <td>{{ res.place }}</td>
           <td>{{ res.blood_group }}</td>
+          <td>{{ res.street_name }}</td>
         </tr>
       {% endfor %}
       </tbody>
