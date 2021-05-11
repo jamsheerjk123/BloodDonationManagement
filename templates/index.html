@@ -26,7 +26,7 @@
       <ul class='links'>
         <li><a href="{% url 'blood:home' %}">Home</a></li>
         <li><a href="{% url 'blood:bloodgroup' %}">Register BloodGroup</a></li>
-        <li><a href="#">Update Your Status</a></li>
+        <li><a href="{% url 'blood:update' %}">Update Your Status</a></li>
         <li><a href="#">About Us</a></li>
       </ul>
       <div class="burger">
@@ -64,11 +64,11 @@
       margin-left:35%;
       background-color:#FBFBFB;">
       {% csrf_token %} 
-      Pincode:<input type="number"name="pincode">
+      Pincode:<input type="number"name="pincode"required>
       Blood Group:
       <select name="blood_group" id="">
         
-        <option value="">Select Blood Group</option>
+        <option value="None">Select Blood Group</option>
         <option value="O+">O+</option>
         <option value="O-">O-</option>
         <option value="A+">A+</option>
@@ -90,7 +90,10 @@
 
     </div>
    {% if result %}
-    <table class="table table-striped table-dark"style="">
+   
+   
+    <table class="table table-striped table-dark"style="border-radius: 10px; margin-top:5%;border:none;width:90%;margin-left:5%;
+    margin-right:5%;">
       <thead>
         <tr>
           <th scope="col">Email</th>
@@ -115,6 +118,7 @@
       {% endfor %}
       </tbody>
     </table>
+  
     {% endif %}
    
     {% endblock %}

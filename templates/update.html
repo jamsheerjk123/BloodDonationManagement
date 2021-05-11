@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+
+{% block css %}
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap" rel="stylesheet">
+    <style>
+      
+      input,select{
+
+        height:30px;
+        border:none;
+        font-size:20px;
+        border-radius:5px;
+        background-color:bisque
+      }
+      label{
+        font-size:20px;
+        letter-spacing:2px;
+        font-weight: 900;
+        font-family: 'Poppins', sans-serif;
+       
+      }
+
+    </style>
+
+  {% endblock %}  
+
+{% block content %}
+
+
+    <form action=""method="POST"style="    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: normal;
+    margin-top: 5%;
+    /* border-style: outset; */
+    padding: 20px;
+    border: 2px solid rgba(0,0,0,0.9);
+    border-radius: 10px;
+    width:30%;
+    margin-left:35%;
+    background-color:#FBFBFB;">
+        {% csrf_token %}
+        <select name="status" id="">
+            <option value="A">Available</option>
+            <option value="NA">Not Available</option>
+        </select>
+        <input type="submit" value="Update"style="background-image: linear-gradient(to left, #c61f44, #921d3a, #611a2d, #32131c, #000000);    height: 40px;
+        margin: 10px;
+        color: floralwhite;
+        font-size: 20px;
+        border: none;
+        border-radius: 5px;">
+    </form>
+
+
+
+{% endblock %}

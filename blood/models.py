@@ -33,3 +33,6 @@ class BloodGroup(models.Model):
 
     def __str__(self):
         return self.user.full_name
+
+    def clean(self):
+        self.street_name = self.street_name.capitalize()     
