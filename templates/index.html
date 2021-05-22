@@ -27,18 +27,16 @@
         <li><a href="{% url 'blood:home' %}">Home</a></li>
         <li><a href="{% url 'blood:bloodgroup' %}">Register BloodGroup</a></li>
         <li><a href="{% url 'blood:update' %}">Update Your Status</a></li>
+        
         <li><a href="#">About Us</a></li>
+        <li><a href=" {% url  'account:signout' %}">Logout</a></li>
       </ul>
       <div class="burger">
         <div class="line1"></div>
         <div class="line2"></div>
         <div class="line3"></div>
       </div>
-      <div class="logout">
-        <button>
-            <a href=" {% url  'account:signout' %}">logout</a>
-        </button>
-      </div>
+      
      
     </nav>
     
@@ -56,6 +54,7 @@
       justify-content: center;
       align-items: normal;
       margin-top: 5%;
+      margin-bottom: 1.5em;
       /* border-style: outset; */
       padding: 20px;
       border: 2px solid rgba(0,0,0,0.9);
@@ -85,35 +84,38 @@
         font-size: 20px;
         border: none;
         border-radius: 5px;" >
-
+      {% for message in messages %}
+      <p style="text-align:center;margin-top :2em;">{{ message }}</p>
+     {% endfor %}
       </form>
-
+       
     </div>
    {% if result %}
    
    
-    <table class="table table-striped table-dark"style="border-radius: 10px; margin-top:5%;border:none;width:90%;margin-left:5%;
-    margin-right:5%;">
-      <thead>
-        <tr>
-          <th scope="col">Email</th>
-          <th scope="col">Name</th>
-          <th scope="col">Phone</th>
-          <th scope="col">Place</th>
-          <th scope="col">Blood Group</th>
-          <th scope="col">Street Name</th>
+    
+    <table class="table">
+        <thead>
+           <th>Email</th>
+           <th>Name</th>
+           <th>Phone</th>
+           <th>Place</th>
+           <th>Blood Group</th>
+           <th>Street</th>
+        </thead>
+        
           
-        </tr>
+      
       </thead>
       <tbody>
         {% for res in result %}
         <tr>
-          <th scope="row">{{ res.user.email }}</th>
-          <td>{{ res.user.full_name }}</td>
-          <td>{{ res.phone }}</td>
-          <td>{{ res.place }}</td>
-          <td>{{ res.blood_group }}</td>
-          <td>{{ res.street_name }}</td>
+          <td data-label="Email">{{ res.user.email }}</td>
+          <td data-label="Full Name">{{ res.user.full_name }}</td>
+          <td data-label="Phone">{{ res.phone }}</td>
+          <td data-label="Place">{{ res.place }}</td>
+          <td data-label="Blood Group">{{ res.blood_group }}</td>
+          <td data-label="Street">{{ res.street_name }}</td>
         </tr>
       {% endfor %}
       </tbody>

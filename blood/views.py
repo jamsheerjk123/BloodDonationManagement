@@ -14,7 +14,7 @@ def home(request):
         blood_group= request.POST['blood_group']
 
         pincode= request.POST['pincode']
-        print (type(pincode))
+        
         street_name = request.POST.get('street_name','')
 
 
@@ -27,7 +27,7 @@ def home(request):
             return render(request,'index.html')
         
         elif type(pincode) == str and blood_group != 'none': 
-            print('hello')
+            
             result=BloodGroup.objects.filter(Q(pincode=pincode) & Q(blood_group=blood_group))
             return render(request,'index.html',{'result': result})
 
@@ -45,7 +45,7 @@ def bloodregister(request):
             blood_group=form.save(commit=False)
             user=request.user
             if BloodGroup.objects.filter(user=user).exists(): 
-
+                messages.error(request,'All Ready Registered')
                 return redirect('blood:home') 
 
                 messages.error(request,'All Ready Registered')
