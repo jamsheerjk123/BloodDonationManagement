@@ -85,13 +85,14 @@
         border: none;
         border-radius: 5px;" >
       {% for message in messages %}
-      <p style="text-align:center;margin-top :2em;">{{ message }}</p>
+
+      <p style="text-align:center;margin-top :2em;">{% if 'success' == message.tags %}{{ message }}{%  endif %}</p>
      {% endfor %}
       </form>
        
     </div>
    {% if result %}
-   
+    
    
     
     <table class="table">
@@ -120,8 +121,18 @@
       {% endfor %}
       </tbody>
     </table>
-  
+
+    {% else %}
+    
+
     {% endif %}
+    {% for message in messages %}
+    <p style="text-align:center;font-size:30px;color:blue">
+      {% if 'error' == message.tags %}{{ message }}{%  endif %}
+      
+
+    </p>
+    {% endfor %}
    
     {% endblock %}
 

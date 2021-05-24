@@ -29,16 +29,17 @@
 
   <div class="container1">
     <div class="form-container">
-        <form action="" method="POST"style="    display: flex;
+        <form action="" name=" registerblood "method="POST"style="    display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: normal;
-        margin-top: 3%;
+        margin-top: 1%;
         /* border-style: outset; */
-        padding: 20px;
+        padding: 20px;height:30%;
         border: 2px solid rgba(0,0,0,0.9);
         border-radius: 10px;
         width:30%;
+
         margin-left:35%;
         background-color:#FBFBFB;
         @media screen  and (maxwidth:768px) {
@@ -49,14 +50,27 @@
       ">
         {% csrf_token %}
         {{ form.as_table }}
-        <input type=submit value="Register"style="background-image: linear-gradient(to left, #c61f44, #921d3a, #611a2d, #32131c, #000000);    height: 40px;
-        margin: 10px;
+        <input type=submit value="Register" onclick="clicked()" style="background-image: linear-gradient(to left, #c61f44, #921d3a, #611a2d, #32131c, #000000);    height: 40px;
+        margin: 8px;
         color: floralwhite;
         font-size: 20px;
         border: none;
         border-radius: 5px;">
+        {% for m in messages %}
+        <p style="text-align:center;margin-bottom: unset;color:blue;"> {{ m }} </p>
+        {% endfor  %}
       </form>
     </div>
   </div>
+  <script type="text/javascript">
+    function clicked() {
+       if (confirm('Are You Sure ?')) {
+           registerblood.submit();
+       } else {
+           return false;
+       }
+    }
+
+</script>
 
 {% endblock %}
